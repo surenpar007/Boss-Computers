@@ -213,9 +213,9 @@
 
       // inner glow
       var g = ctx.createRadialGradient(W / 2, Hh * 0.47, 0, W / 2, Hh * 0.47, Math.min(W, Hh) * 0.42);
-      g.addColorStop(0, 'rgba(244,163,107,0.22)');
-      g.addColorStop(0.45, 'rgba(123,63,208,0.12)');
-      g.addColorStop(1, 'rgba(123,63,208,0)');
+      g.addColorStop(0, 'rgba(240,122,30,0.12)');
+      g.addColorStop(0.45, 'rgba(46,134,228,0.07)');
+      g.addColorStop(1, 'rgba(46,134,228,0)');
       ctx.fillStyle = g; ctx.fillRect(0, 0, W, Hh);
 
       // faces, back to front
@@ -233,9 +233,9 @@
         var a = P[o.f[0]], b = P[o.f[1]], c = P[o.f[2]];
         var grad = ctx.createLinearGradient(a.x, a.y, (b.x + c.x) / 2, (b.y + c.y) / 2);
         var warm = Math.max(0, Math.min(1, 0.5 - o.lx * 0.6));
-        var alpha = o.front ? 0.34 : 0.12;
-        grad.addColorStop(0, 'rgba(' + Math.round(201 + 43 * warm) + ',' + Math.round(168 - 5 * warm) + ',' + Math.round(240 - 133 * warm) + ',' + alpha + ')');
-        grad.addColorStop(1, 'rgba(123,63,208,' + (alpha * 0.45) + ')');
+        var alpha = o.front ? 0.42 : 0.14;
+        grad.addColorStop(0, 'rgba(' + Math.round(205 + 35 * warm) + ',' + Math.round(162 - 40 * warm) + ',' + Math.round(232 - 202 * warm) + ',' + alpha + ')');
+        grad.addColorStop(1, 'rgba(46,134,228,' + (alpha * 0.55) + ')');
         ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.lineTo(c.x, c.y); ctx.closePath();
         ctx.fillStyle = grad; ctx.fill();
       });
@@ -244,7 +244,7 @@
       E.forEach(function (e) {
         var a = P[e[0]], b = P[e[1]];
         var depth = (a.z + b.z) / 2;
-        ctx.strokeStyle = 'rgba(255,255,255,' + (0.28 + depth * 0.32).toFixed(3) + ')';
+        ctx.strokeStyle = 'rgba(74,24,144,' + (0.3 + depth * 0.35).toFixed(3) + ')';
         ctx.lineWidth = depth > 0 ? 1.4 : 0.8;
         ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
       });
@@ -254,8 +254,8 @@
         var on = i === current;
         ctx.beginPath();
         ctx.arc(p.x, p.y, on ? 5 : 3, 0, Math.PI * 2);
-        ctx.fillStyle = on ? '#F4A36B' : 'rgba(255,255,255,' + (0.55 + p.z * 0.4) + ')';
-        if (on) { ctx.shadowColor = 'rgba(244,163,107,.9)'; ctx.shadowBlur = 18; }
+        ctx.fillStyle = on ? '#F07A1E' : 'rgba(74,24,144,' + (0.55 + p.z * 0.35) + ')';
+        if (on) { ctx.shadowColor = 'rgba(240,122,30,.7)'; ctx.shadowBlur = 18; }
         ctx.fill(); ctx.shadowBlur = 0;
 
         var l = labels[i];
